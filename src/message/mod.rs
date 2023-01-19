@@ -42,7 +42,7 @@ impl BgpMessageType {
             2 => Ok(BgpMessageType::Update),
             3 => Ok(BgpMessageType::Notification),
             4 => Ok(BgpMessageType::Keepalive),
-            _ => Err(BgpError::static_str("Invalid message type")),
+            other => Err(BgpError::from_string(format!("Invalid message type: {}", other))),
         }
     }
     /// encodes BGP message type into the byte code
